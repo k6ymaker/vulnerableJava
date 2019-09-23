@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.keymaker.dao.IUserDao">
+    <select id="findAll" resultType="com.keymaker.domain.User">
+        select * from t_user
+    </select>
+    <select id="findUserByUsername" parameterType="STRING" resultType="com.keymaker.domain.User">
+        select * from t_user where  username = #{username}
+    </select>
+    <insert id="saveUser" parameterType="com.keymaker.domain.User" >
+        insert into t_user(username,password,sex) values(#{username},#{password},#{sex});
+    </insert>
+
+
+    <select id="findUserByIdSafe" parameterType="INT" resultType="com.keymaker.domain.User">
+        select * from t_user where id = #{id}
+    </select>
+    <select id="findUserByIdVul" parameterType="string" resultType="com.keymaker.domain.User">
+        select * from t_user where id = ${value}
+    </select>
+
+    <select id="likeBynameVul" parameterType="string" resultType="com.keymaker.domain.User">
+        select * from t_user where  username like '%${value}%'
+    </select>
+    <select id="likeBynameSafe" parameterType="string" resultType="com.keymaker.domain.User">
+        select * from t_user where  username like concat('%',#{value},'%')
+    </select>
+
+    <select id="inSexVul" parameterType="string" resultType="com.keymaker.domain.User">
+        select * from t_user where sex in (${value})
+    </select>
+    <select id="inSexSafe" parameterType="arraylist" resultType="com.keymaker.domain.User">
+        select * from t_user where sex in
+        <foreach collection="array" index="index" item="sex" separator="," open="(" close=")">
+            #{sex}
+        </foreach>
+    </select>
+
+    <select id="orderByVul" parameterType="string" resultType="com.keymaker.domain.User">
+        select * from t_user order by ${value} asc
+    </select>
+</mapper>
