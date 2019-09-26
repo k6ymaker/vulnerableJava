@@ -11,6 +11,7 @@
     <modules>
         <module>gadget1</module>
         <module>gadget2</module>
+        <module>gadget3</module>
     </modules>
 
     <dependencies>

@@ -13,10 +13,7 @@
     }
 }
 ```
-
+#reference
 - [分析](https://www.anquanke.com/post/id/181874)
-
-
-
 - [RMI 利用](https://kingx.me/Exploit-Java-Deserialization-with-RMI.html)
 
