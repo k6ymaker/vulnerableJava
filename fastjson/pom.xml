@@ -12,6 +12,7 @@
         <module>gadget1</module>
         <module>gadget2</module>
         <module>gadget3</module>
+        <module>dos</module>
     </modules>
 
     <dependencies>
